@@ -1,4 +1,4 @@
-package com.automation.cydeo.tests_Bahram;
+package com.automation.cydeo.test_Ebru;
 
 import org.testng.annotations.Test;
 
