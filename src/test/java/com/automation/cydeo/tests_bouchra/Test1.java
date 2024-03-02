@@ -1,4 +1,4 @@
-package com.automation.cydeo.tests_Merve;
+package com.automation.cydeo.tests_bouchra;
 
 public class Test1 {
 

@@ -1,4 +1,4 @@
-package com.automation.cydeo.pages_Merve;
+package com.automation.cydeo.pages_bouchra;
 
 import com.automation.cydeo.utilities.Driver;
 import org.openqa.selenium.WebElement;
