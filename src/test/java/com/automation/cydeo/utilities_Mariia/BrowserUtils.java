@@ -1,17 +1,20 @@
 package com.automation.cydeo.utilities_Mariia;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.Set;
 
 public class BrowserUtils {
 
+    static SoftAssert softAssert = new SoftAssert();
     /*
       This method will accept int (in seconds)
       and execute Thread.sleep method for given duration
@@ -47,10 +50,14 @@ public class BrowserUtils {
     }
 
     public static void verifyTitle(WebDriver driver, String expectedTitle){
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+        softAssert.assertEquals(driver.getTitle(), expectedTitle);
     }
     public static void verifyTitleContains(WebDriver driver, String expectedInTitle){
-        Assert.assertTrue(driver.getTitle().contains(expectedInTitle));
+        softAssert.assertTrue(driver.getTitle().contains(expectedInTitle));
+    }
+
+    public static void verifyURL(String expectedURL){
+        softAssert.assertEquals(Driver.getDriver().getCurrentUrl(), expectedURL);
     }
 
     /*
@@ -85,6 +92,17 @@ public class BrowserUtils {
     public static void scrollDown(int pixels) {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0, "+ pixels +")");
+    }
+
+    public static void closeAds(){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("aswift_1"));
+
+        Driver.getDriver().findElement(By.cssSelector("div[role='button']")).click();
+
+        Driver.getDriver().switchTo().defaultContent();
+
     }
 
 }

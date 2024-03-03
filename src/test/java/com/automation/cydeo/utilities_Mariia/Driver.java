@@ -20,17 +20,15 @@ public class Driver {
     - If an instance doesn't exist, it will create first, and then it will always return same instance.
      */
     public static WebDriver getDriver(){
-
         if(driver == null){
 
             /*
-            We will read our browserType from configuration.properties file.
+            We will read our browserType from configMariia.properties file.
             This way, we can control which browser is opened from outside our code.
              */
             String browserType = ConfigurationReader.getProperty("browser");
-
             /*
-            Depending on the browserType returned from the configuration.properties
+            Depending on the browserType returned from the configMariia.properties
             switch statement will determine the "case", and open the matching browser.
              */
             switch (browserType){
@@ -47,13 +45,9 @@ public class Driver {
                     // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
             }
-
         }
-
         return driver;
-
     }
-
     /*
     Create a new Driver.closeDriver(); it will use .quit() method to quit browsers, and then set the driver value back to null.
      */

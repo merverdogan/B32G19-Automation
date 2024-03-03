@@ -8,16 +8,23 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
 public class TestBase {
-    protected FirstPage firstPage = new FirstPage();
-    protected LoginPage loginPage = new LoginPage();
-    protected SignupPage signupPage = new SignupPage();
+    protected FirstPage firstPage;
+    protected LoginPage loginPage;
+    protected SignupPage signupPage;
 
-    protected SoftAssert softAssert = new SoftAssert();
-    protected AccountCreatedPage accountCreatedPage = new AccountCreatedPage();
-    protected DeleteAccountPage deleteAccountPage = new DeleteAccountPage();
+    protected SoftAssert softAssert;
+    protected AccountCreatedPage accountCreatedPage;
+    protected DeleteAccountPage deleteAccountPage;
 
     @BeforeMethod
     public void setupMethod(){
+        firstPage = new FirstPage();
+        loginPage = new LoginPage();
+        signupPage = new SignupPage();
+
+       softAssert = new SoftAssert();
+        accountCreatedPage = new AccountCreatedPage();
+        deleteAccountPage = new DeleteAccountPage();
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
 

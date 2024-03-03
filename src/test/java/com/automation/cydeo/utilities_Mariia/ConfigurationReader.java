@@ -15,7 +15,7 @@ public class ConfigurationReader {
 
         try {
             //2- Open file using FileInputStream (open file)
-            FileInputStream file = new FileInputStream("configuration.properties");
+            FileInputStream file = new FileInputStream("configMariia.properties");
             //3- Load the "properties" object with "file" (load properties)
             properties.load(file);
 
