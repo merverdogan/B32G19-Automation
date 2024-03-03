@@ -1,4 +1,4 @@
-package com.automation.cydeo.utilities;
+package com.automation.cydeo.utilities_Mariia;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
