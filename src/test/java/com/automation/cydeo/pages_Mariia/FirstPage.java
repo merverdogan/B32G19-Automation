@@ -18,7 +18,7 @@ public class FirstPage {
     public WebElement contactUsButton;
 
     @FindBy(xpath = "//a[text()=' Logged in as ']")
-    public WebElement loggedInAsUserName;
+    public WebElement       loggedInAsUserName;
 
     @FindBy(xpath = "//a[text()=' Delete Account']")
     public WebElement deleteAccountButton;

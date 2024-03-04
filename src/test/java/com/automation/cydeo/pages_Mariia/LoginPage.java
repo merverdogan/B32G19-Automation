@@ -4,6 +4,7 @@ import com.automation.cydeo.utilities_Mariia.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.w3c.dom.Text;
 
 public class LoginPage {
 
@@ -26,13 +27,14 @@ public class LoginPage {
     @FindBy (xpath = "//button[.='Signup']")
     public WebElement signupButton;
 
-    @FindBy (linkText = "Login")
+    @FindBy (xpath = "//button[.='Login']")
     public WebElement loginButton;
 
     @FindBy(xpath = "//h2[.='New User Signup!']")
     public WebElement newUserSignupText;
 
-
+    @FindBy(xpath = "//h2[.='Login to your account']")
+    public WebElement loginToYourAccountText;
 
 
 }

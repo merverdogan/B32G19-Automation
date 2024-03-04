@@ -6,25 +6,19 @@ import com.automation.cydeo.utilities_Mariia.BrowserUtils;
 import com.automation.cydeo.utilities_Mariia.ConfigurationReader;
 import com.automation.cydeo.utilities_Mariia.Driver;
 import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
+public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
 
-public class TC1_Register_User extends TestBase {
-    FirstPage firstPage = new FirstPage();
-    LoginPage loginPage = new LoginPage();
-    SignupPage signupPage = new SignupPage();
 
-    SoftAssert softAssert = new SoftAssert();
-    AccountCreatedPage accountCreatedPage = new AccountCreatedPage();
-    DeleteAccountPage deleteAccountPage = new DeleteAccountPage();
+
+    //Test Case 2: Login User with correct email and password
+    //1. Launch browser
+    //2. Navigate to url 'http://automationexercise.com'
     @Test
-    public void register_user_test1() {
+    public void test1_register_user() {
 
         //3. Verify that home page is visible successfully
 
@@ -45,9 +39,8 @@ public class TC1_Register_User extends TestBase {
         //6. Enter name and email address
         Faker faker = new Faker();
 
-        String userName = faker.name().username();
-        loginPage.signupName.sendKeys(userName);
-        loginPage.signupEmail.sendKeys(faker.internet().emailAddress());
+        loginPage.signupName.sendKeys(ConfigurationReader.getProperty("username_login_delete"));
+        loginPage.signupEmail.sendKeys(ConfigurationReader.getProperty("email_login_delete"));
 
         //7. Click 'Signup' button
 
@@ -60,7 +53,7 @@ public class TC1_Register_User extends TestBase {
         //9. Fill details: Title, Name, Email, Password, Date of birth
 
         signupPage.radioTitleMr.click();
-        signupPage.inputPassword.sendKeys(faker.internet().password());
+        signupPage.inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
 
         Select selectDay = new Select(signupPage.selectDayDOB);
         Select selectMonth = new Select(signupPage.selectMonthDOB);
@@ -107,17 +100,50 @@ public class TC1_Register_User extends TestBase {
 
         accountCreatedPage.buttonContinue.click();
 
-        BrowserUtils.closeAds();
+        softAssert.assertAll();
 
-        //16. Verify that 'Logged in as username' is visible
+    }
 
-        softAssert.assertEquals(firstPage.loggedInAsUserName.getText(), "Logged in as "+userName);
+    @Test
+    public void test2_login_user_with_correct_credential(){
+        //3. Verify that home page is visible successfully
 
-        //17. Click 'Delete Account' button
+        String expectedURL = "https://automationexercise.com/";
+
+        BrowserUtils.verifyURL(expectedURL);
+
+        BrowserUtils.sleep(5);
+
+        //4. Click on 'Signup / Login' button
+
+        firstPage.signupLoginButton.click();
+
+        //5. Verify 'Login to your account' is visible
+
+        softAssert.assertTrue(loginPage.loginToYourAccountText.isDisplayed());
+
+        //6. Enter correct email address and password
+
+        loginPage.loginEmail.sendKeys(ConfigurationReader.getProperty("email_login_delete"));
+        loginPage.password.sendKeys(ConfigurationReader.getProperty("password"));
+
+        //7. Click 'login' button
+
+        loginPage.loginButton.click();
+
+        //8. Verify that 'Logged in as username' is visible
+
+        softAssert.assertEquals(firstPage.loggedInAsUserName.getText(), "Logged in as "+ConfigurationReader.getProperty("username_login_delete"));
+
+        //9. Click 'Delete Account' button
 
         firstPage.deleteAccountButton.click();
 
-        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+        BrowserUtils.sleep(3);
+        BrowserUtils.closeAds();
+
+        //10. Verify that 'ACCOUNT DELETED!' is visible
+
 
         softAssert.assertEquals(deleteAccountPage.accountDeleted.getText(), "ACCOUNT DELETED!");
 
@@ -125,10 +151,7 @@ public class TC1_Register_User extends TestBase {
 
         softAssert.assertAll();
 
+
     }
-
-
-
-
 
 }
