@@ -36,5 +36,10 @@ public class LoginPage {
     @FindBy(xpath = "//h2[.='Login to your account']")
     public WebElement loginToYourAccountText;
 
+    @FindBy(xpath = "//p[.='Your email or password is incorrect!']")
+    public WebElement yourEmailOrPasswordIncorrectText;
+    @FindBy(xpath = "//p[.='Email Address already exist!']")
+    public WebElement emailAlreadyExistText;
+
 
 }

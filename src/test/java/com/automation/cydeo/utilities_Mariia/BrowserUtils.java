@@ -51,13 +51,16 @@ public class BrowserUtils {
 
     public static void verifyTitle(WebDriver driver, String expectedTitle){
         softAssert.assertEquals(driver.getTitle(), expectedTitle);
+        softAssert.assertAll();
     }
     public static void verifyTitleContains(WebDriver driver, String expectedInTitle){
         softAssert.assertTrue(driver.getTitle().contains(expectedInTitle));
+        softAssert.assertAll();
     }
 
     public static void verifyURL(String expectedURL){
         softAssert.assertEquals(Driver.getDriver().getCurrentUrl(), expectedURL);
+        softAssert.assertAll();
     }
 
     /*
@@ -103,6 +106,11 @@ public class BrowserUtils {
 
         Driver.getDriver().switchTo().defaultContent();
 
+    }
+
+    public static void verifyVisibleTextEqual(WebElement element, String expectedText){
+        softAssert.assertEquals(element.getText(), expectedText);
+        softAssert.assertAll();
     }
 
 }

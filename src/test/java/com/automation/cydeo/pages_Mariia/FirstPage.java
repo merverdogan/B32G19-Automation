@@ -14,13 +14,15 @@ public class FirstPage {
     @FindBy(xpath = "//a[.=' Signup / Login']")
     public WebElement signupLoginButton;
 
-    @FindBy(linkText = " Contact us")
+    @FindBy(xpath = "//a[.=' Contact us']")
     public WebElement contactUsButton;
 
     @FindBy(xpath = "//a[text()=' Logged in as ']")
-    public WebElement       loggedInAsUserName;
+    public WebElement loggedInAsUserName;
 
     @FindBy(xpath = "//a[text()=' Delete Account']")
     public WebElement deleteAccountButton;
+    @FindBy(xpath = "//a[.=' Logout']")
+    public WebElement logoutButton;
 
 }
