@@ -13,6 +13,8 @@ public class FirstPage {
 
     @FindBy(xpath = "//a[.=' Signup / Login']")
     public WebElement signupLoginButton;
+    @FindBy(xpath = "//a[text()=' Products']")
+    public WebElement productsButton;
 
     @FindBy(xpath = "//a[.=' Contact us']")
     public WebElement contactUsButton;
@@ -24,5 +26,7 @@ public class FirstPage {
     public WebElement deleteAccountButton;
     @FindBy(xpath = "//a[.=' Logout']")
     public WebElement logoutButton;
+    @FindBy(xpath = "//button[.='Test Cases']")
+    public WebElement testCaseButton;
 
 }

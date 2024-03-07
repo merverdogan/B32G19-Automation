@@ -115,6 +115,7 @@ public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
 
         //4. Click on 'Signup / Login' button
 
+
         firstPage.signupLoginButton.click();
 
         //5. Verify 'Login to your account' is visible

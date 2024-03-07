@@ -18,6 +18,7 @@ public class TestBase {
     protected DeleteAccountPage deleteAccountPage;
     protected Faker faker;
     protected ContactUsPage contactUsPage;
+    protected AllProductsPage allProductsPage;
 
     @BeforeMethod
     public void setupMethod() {
@@ -28,6 +29,7 @@ public class TestBase {
         accountCreatedPage = new AccountCreatedPage();
         deleteAccountPage = new DeleteAccountPage();
         contactUsPage = new ContactUsPage();
+        allProductsPage = new AllProductsPage();
         faker = new Faker();
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'

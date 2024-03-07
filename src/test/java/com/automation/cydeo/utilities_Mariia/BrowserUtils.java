@@ -1,9 +1,6 @@
 package com.automation.cydeo.utilities_Mariia;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -53,8 +50,8 @@ public class BrowserUtils {
         softAssert.assertEquals(driver.getTitle(), expectedTitle);
         softAssert.assertAll();
     }
-    public static void verifyTitleContains(WebDriver driver, String expectedInTitle){
-        softAssert.assertTrue(driver.getTitle().contains(expectedInTitle));
+    public static void verifyTitleContains(String expectedInTitle){
+        softAssert.assertTrue(Driver.getDriver().getTitle().contains(expectedInTitle));
         softAssert.assertAll();
     }
 
@@ -105,6 +102,21 @@ public class BrowserUtils {
         Driver.getDriver().findElement(By.cssSelector("div[role='button']")).click();
 
         Driver.getDriver().switchTo().defaultContent();
+
+    }
+    public static void closeAds(String iframeID){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        try {
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframeID));
+
+            Driver.getDriver().findElement(By.cssSelector("div[role='button']")).click();
+
+            Driver.getDriver().switchTo().defaultContent();
+        } catch (NoSuchElementException n){
+            System.out.println("NoSuchElementException is thrown. It means that the Checkbox is not on the page.");
+            softAssert.assertTrue(true);
+            softAssert.assertAll();
+        }
 
     }
 

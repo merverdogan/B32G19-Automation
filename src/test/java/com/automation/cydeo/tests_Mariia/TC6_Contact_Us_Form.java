@@ -65,7 +65,7 @@ public class TC6_Contact_Us_Form extends TestBase {
 
         contactUsPage.homeButton.click();
 
-        BrowserUtils.verifyTitleContains(Driver.getDriver(), "Automation Exercise");
+        BrowserUtils.verifyTitleContains("Automation Exercise");
     }
 
 }
