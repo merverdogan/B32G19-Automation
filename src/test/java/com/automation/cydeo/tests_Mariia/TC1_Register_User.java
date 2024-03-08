@@ -16,13 +16,7 @@ import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 
 public class TC1_Register_User extends TestBase {
-    FirstPage firstPage = new FirstPage();
-    LoginPage loginPage = new LoginPage();
-    SignupPage signupPage = new SignupPage();
 
-    SoftAssert softAssert = new SoftAssert();
-    AccountCreatedPage accountCreatedPage = new AccountCreatedPage();
-    DeleteAccountPage deleteAccountPage = new DeleteAccountPage();
     @Test
     public void register_user_test1() {
 
@@ -40,10 +34,10 @@ public class TC1_Register_User extends TestBase {
 
         //5. Verify 'New User Signup!' is visible
 
-        softAssert.assertTrue(loginPage.newUserSignupText.isDisplayed());
+        //softAssert.assertTrue(loginPage.newUserSignupText.isDisplayed());
+        BrowserUtils.verifyVisibleTextEqual(loginPage.newUserSignupText, "New User Signup!");
 
         //6. Enter name and email address
-        Faker faker = new Faker();
 
         String userName = faker.name().username();
         loginPage.signupName.sendKeys(userName);
@@ -55,7 +49,8 @@ public class TC1_Register_User extends TestBase {
 
         //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
 
-        softAssert.assertEquals(signupPage.enterAccountInformationText.getText(), "ENTER ACCOUNT INFORMATION");
+        //softAssert.assertEquals(signupPage.enterAccountInformationText.getText(), "ENTER ACCOUNT INFORMATION");
+        BrowserUtils.verifyVisibleTextEqual(signupPage.enterAccountInformationText, "ENTER ACCOUNT INFORMATION");
 
         //9. Fill details: Title, Name, Email, Password, Date of birth
 

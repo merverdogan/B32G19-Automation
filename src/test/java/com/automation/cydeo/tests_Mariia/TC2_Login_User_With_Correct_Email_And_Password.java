@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.NoSuchElementException;
+
 public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
 
 
@@ -26,7 +28,7 @@ public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
 
         BrowserUtils.verifyURL(expectedURL);
 
-        BrowserUtils.sleep(1);
+
 
         //4. Click on 'Signup / Login' button
 
@@ -37,7 +39,6 @@ public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
         softAssert.assertTrue(loginPage.newUserSignupText.isDisplayed());
 
         //6. Enter name and email address
-        Faker faker = new Faker();
 
         loginPage.signupName.sendKeys(ConfigurationReader.getProperty("username_login_delete"));
         loginPage.signupEmail.sendKeys(ConfigurationReader.getProperty("email_login_delete"));
@@ -112,9 +113,8 @@ public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
 
         BrowserUtils.verifyURL(expectedURL);
 
-        BrowserUtils.sleep(5);
-
         //4. Click on 'Signup / Login' button
+
 
         firstPage.signupLoginButton.click();
 
@@ -139,11 +139,13 @@ public class TC2_Login_User_With_Correct_Email_And_Password extends TestBase {
 
         firstPage.deleteAccountButton.click();
 
-        BrowserUtils.sleep(3);
-        BrowserUtils.closeAds();
+        try {
+            BrowserUtils.closeAds();
+        } catch (NoSuchElementException e){
+
+        }
 
         //10. Verify that 'ACCOUNT DELETED!' is visible
-
 
         softAssert.assertEquals(deleteAccountPage.accountDeleted.getText(), "ACCOUNT DELETED!");
 
